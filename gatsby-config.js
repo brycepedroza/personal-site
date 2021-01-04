@@ -6,7 +6,8 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 
 module.exports = {
   siteMetadata: {
-    siteTitleAlt: `Minimal Blog - Gatsby Theme`,
+    siteTitle: `Bryce Pedroza`,
+    siteTitleAlt: `Bryce Pedroza. A personal site`,
   },
   plugins: [
     {
@@ -15,24 +16,30 @@ module.exports = {
       options: {
         navigation: [
           {
-            title: `Blog`,
-            slug: `/blog`,
+            title: `Articles`,
+            slug: `/articles`,
           },
           {
             title: `About`,
             slug: `/about`,
           },
+          {
+            title: `Resume`,
+            slug: `/resume`,
+          }
         ],
         externalLinks: [
           {
-            name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
+            name: `GitHub`,
+            url: `https://github.com/brycepedroza/`,
           },
           {
-            name: `Instagram`,
-            url: `https://www.instagram.com/lekoarts.de/`,
-          },
+            name: `LinkedIn`,
+            url: `https://www.linkedin.com/in/bryce-pedroza/`,
+          }
         ],
+        blogPath: '/articles',
+
       },
     },
     {
