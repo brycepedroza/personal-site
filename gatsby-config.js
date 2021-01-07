@@ -8,7 +8,6 @@ module.exports = {
   siteMetadata: {
     siteTitle: `Bryce Pedroza`,
     siteTitleAlt: `Bryce Pedroza`,
-    siteImage: `/favicon.ico`,
     siteDescription: `A Personal Gatsby JS React Website for Bryce Pedroza. A security engineer and technologist`,
   },
   plugins: [
@@ -17,7 +16,6 @@ module.exports = {
       // See the theme's README for all available options
       options: {
         feedTitle: `Bryce Pedroza`,
-        siteImage: `/favicon.ico`,
         navigation: [
           {
             title: `Articles`,
@@ -63,18 +61,7 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#6B46C1`,
         display: `standalone`,
-        icons: [
-          {
-            src: `/bp.png`,
-            sizes: `192x192`,
-            type: `image/png`,
-          },
-          {
-            src: `/bp.png`,
-            sizes: `512x512`,
-            type: `image/png`,
-          }
-        ],
+        icon: `static/bp.png`
       },
     },
     `gatsby-plugin-offline`,
