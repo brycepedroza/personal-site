@@ -7,13 +7,17 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 module.exports = {
   siteMetadata: {
     siteTitle: `Bryce Pedroza`,
-    siteTitleAlt: `Bryce Pedroza. A personal site`,
+    siteTitleAlt: `Bryce Pedroza`,
+    siteImage: `/favicon.ico`,
+    siteDescription: `A Personal Gatsby JS React Website for Bryce Pedroza. A security engineer and technologist`,
   },
   plugins: [
     {
       resolve: `@lekoarts/gatsby-theme-minimal-blog`,
       // See the theme's README for all available options
       options: {
+        feedTitle: `Bryce Pedroza`,
+        siteImage: `/favicon.ico`,
         navigation: [
           {
             title: `Articles`,
@@ -52,7 +56,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `minimal-blog - @lekoarts/gatsby-theme-minimal-blog`,
+        name: `Bryce Pedroza - A Personal Website`,
         short_name: `minimal-blog`,
         description: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and code highlighting.`,
         start_url: `/`,
@@ -61,15 +65,15 @@ module.exports = {
         display: `standalone`,
         icons: [
           {
-            src: `/android-chrome-192x192.png`,
+            src: `/bp.png`,
             sizes: `192x192`,
             type: `image/png`,
           },
           {
-            src: `/android-chrome-512x512.png`,
+            src: `/bp.png`,
             sizes: `512x512`,
             type: `image/png`,
-          },
+          }
         ],
       },
     },
