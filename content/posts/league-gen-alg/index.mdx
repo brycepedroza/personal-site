@@ -1,8 +1,90 @@
 ---
-title: "Building a League of Legends Genetic Algorith"
+title: "Building a League of Legends Genetic Algorithm"
 date: 2020-04-30
 slug: "/league-gen-alg"
+
 ---
 
-I'll port the write up over soon!
-In the meantime, view the final writeup.
+import { Button } from "theme-ui"
+import header_image from "../../../static/LeagueGenAlg/images/header_image.jpg"
+import given_team from "../../../static/LeagueGenAlg/images/given_team.png"
+import generated_teams from "../../../static/LeagueGenAlg/images/generated_teams.png"
+import crossover from "../../../static/LeagueGenAlg/images/crossover.png"
+import mutation from "../../../static/LeagueGenAlg/images/mutation.png"
+import fitness_function from "../../../static/LeagueGenAlg/images/fitness_function.png"
+import selection from "../../../static/LeagueGenAlg/images/selection.png"
+import performance from "../../../static/LeagueGenAlg/images/performance.png"
+
+<div style={{textAlign: 'center'}}>
+  <img src={header_image} style={{maxWidth:"100%"}} alt="Header Image" />
+</div>
+
+<br/>
+
+<Button as={Link} to={'/LeagueGenAlg'}>
+  Live Demo!
+</Button>
+
+---
+
+League of Legends (LoL) is a prominent Multiplayer Online Battle Arena (MOBA) game with over 115 million active monthly players reported as of 2019. Players are split into two teams of five with the objective of destroying the other team’s base first. Each player controls one of 148 unique champions for the duration of the game. The 5 unique champions piloted by each team are known as the team composition, and it is a pivotal strategy in competitive games.
+
+## The Importance of Counter Picking
+
+Champions are known to perform well against some, and poorly against others. Similarly, champions have synergies that augment their respective strengths when played together. As a result, team compositions have a huge impact on the results of a game. Therefore, not only is it important to pick the best possible champions, but it is also important to pick champions that perform well against the other team’s team composition.
+
+## So What's the Solution?
+<div style={{textAlign: 'center'}}>
+  <img src={given_team} style={{maxWidth:"100%"}} alt="Given Team" />
+</div>
+
+Genetic Algorithms simulate natural selection as a method to find optimized solutions over a large search space. A random population of individuals are provided with a set of properties. These properties can be mutated or traded between individuals across each iteration, or generation. A fitness function is then used to objectively evaluate the strength of each individual, and the strongest carry on to the next generation. We built a genetic algorithm as a way to determine the best possible team composition to counter a given team.
+
+## How does it work?
+<div style={{textAlign: 'center'}}>
+  <img src={generated_teams} style={{maxWidth:"100%"}} alt="Generated Team" />
+</div>
+
+The individuals in this problem are randomly selected team compositions. Each team composition has five champions, each with their own unique statistics against all other champions in the game. These team compositions are evaluated on their performance against the given team composition, taking win rates and the number of games played into consideration to produce a confidence score against the given team. The higher the confidence, the higher the fitness score.
+
+### Crossover
+<div style={{textAlign: 'center'}}>
+  <img src={crossover} style={{maxWidth:"100%"}} alt="Crossover" />
+</div>
+
+To create the new generation of individuals, “parents” pair together to produce “children” which inherit traits from both parents. When crossing over our team compositions, A single champion from both parents swap place, creating two new team compositions.
+
+### Mutation
+<div style={{textAlign: 'center'}}>
+  <img src={mutation} style={{maxWidth:"100%"}} alt="Mutation" />
+</div>
+
+Mutations serve as a way to explore the search space and maintain genetic diversity within the population. When a team composition is mutated, a random champion is replaced with a new champion. Doing so enables the algorithm to find more unique team compositions that might perform better than the current best composition.
+
+
+### Fitness
+<div style={{textAlign: 'center'}}>
+  <img src={fitness_function} style={{maxWidth:"100%"}} alt="Fitness Function" />
+</div>
+
+A team composition’s fitness is a calculation of the performance of each champion against all champions in the given team composition. Each champion’s performance is calculated using the Wilson score interval with a confidence of 95%. This results in an improved normalized probability that considers both the champion’s win rate and the number of games played against that champion in its calculation. The overall fitness is the average of all confidence calculations for each champion.
+
+
+### Selection
+<div style={{textAlign: 'center'}}>
+  <img src={selection} style={{maxWidth:"100%"}} alt="Selection" />
+</div>
+
+Only a portion of the existing population is carried on to the next generation. Team compositions are selected based on their fitness calculated in the prior step. Two individuals in the population are randomly chosen, and the stronger of the two is selected for the next generation. However, both individuals can be picked again in the selection process, so the weaker one has a chance of being selected for the next generation. Likewise, the stronger individual can have more than one copy in the next generation as well.
+
+
+## How does it Perform?
+<div style={{textAlign: 'center'}}>
+  <img src={performance} style={{maxWidth:"100%"}} alt="Performance" />
+</div>
+
+Mutation and crossover allow the algorithm to explore the search space more drastically in an effort to find the global maximum. This might cause dips in the average fitness of the individuals across generations, but the algorithm will always return the most fit individual across all generations.
+
+
+## Future Improvements
+The biggest shortcoming is the limited amount of game data captured. Game information data was collected with the help of other third party developers such as myself. This data was a one time data dump and does not update dynamically from patch to patach. As it gets more popular, this is something I would love to implement in the future.
