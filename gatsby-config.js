@@ -62,7 +62,6 @@ module.exports = {
         short_name: `minimal-blog`,
         description: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and code highlighting.`,
         start_url: `/`,
-        background_color: `#fff`,
         theme_color: `#6B46C1`,
         display: `standalone`,
         icon: `static/bp.png`,
