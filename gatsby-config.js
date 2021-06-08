@@ -65,7 +65,8 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#6B46C1`,
         display: `standalone`,
-        icon: `static/bp.png`
+        icon: `static/bp.png`,
+        theme_color_in_head: false, // This will avoid adding theme-color meta tag.
       },
     },
     `gatsby-plugin-offline`,
